@@ -1,0 +1,127 @@
+Objetivo: Aplicacion completa de sistema de cuentas...
+
+----------------------------------------------------------------------
+
+Seccion Recibido
+
+Entrada de fecha de entrada de dinero, son dos entradas:
+
+- Obra Mundial (OM)
+- Donacion Congregacion (C)
+
+En ese apartado se ingresa el monto de estos 2 y con fecha que se extrajo (es un sola por los dos)
+
+------------------------------
+
+Ejemplo de entrada:
+
+fecha =  2026-08-01
+obra mundial = 2000
+congregacion = 4000 
+
+------------------------------
+
+arma todo en base a esos datos que se ingresan... Luego
+
+El sistema debe ordenar POR MES y AÑO, osea yo ingreso cada vez que se hace en el mes y lo ordena ascendentemente (desde el 1 al ultimo dia del mes) con los datos ya mencionados pero los escupiria asi...
+
+
+fecha =  2026-08-01
+obra mundial = 2000
+congregacion = 4000
+
+fecha =  2026-08-04
+obra mundial = 20000
+congregacion = 10000
+
+........
+
+Luego de esto quedaria armado todo lo que entra
+
+---------------------------------
+
+Parte salida
+
+Esto es de la suma total de lo que se junto entre ambos, osea la suma aritmetica entre Obra mundial y Congregacion, la llamaremos Deposito (D); 
+
+De entrada sera:
+
+OM + C = D
+Obra Mundial + Congregacion = Deposito
+
+y debe ir acompañado con su fecha de deposito quedando por ejemplo
+
+deposito = 3000
+fecha_deposito = 2026-08-07
+
+---------------------
+
+Harbia un posteiror endpoint que tome solo las fechas existentes de ese mes y las ordene cronologicamente con sus datos si es deposito, OM, o C con sus montos y fechas
+
+
+
+----------------------------------------------------------------------
+
+Luego de esto quedaria marcar a donde va deposito  que va a seccion...
+
+CUENTA PRINCIPAL
+
+recibe el monto de deposito
+
+Se debe:
+
+1- Calcular el total de todo el deposito que debe ser igual al que llego desde deposito (como comparamos?) bueno en esta secccion tendra un atributo entrada que sera todo lo que reciba, cn su fecha
+
+monto_entrada = numero
+fecha_entrada = fecha formtato ISO
+
+la suma de todos los que entren durante ese mes debe ser IGUAL al Monto de seccion RECIBIDO pero con una excepcion
+
+debe haber un apartado de entrada llamado "Intereses Bancarios" (I) y se debe ingresar su fecha y monto
+
+monto = numero
+fecha = fecha fromato ISO
+
+---------------------------
+
+este se suma al total de monto_entrada de la seccion recibido, si y solo si:
+
+monto_entrada (De seccion recibido) - monto (De intereses) == (debe ser igual en valor a) Deposito de seccion Recibido
+
+
+y lo ultim ode esta seccion es:
+
+la parte de Salida de cuenta principal,
+
+tiene una entrada de datos asi:
+
+cuota_mantenimiento = numero
+fecha = fecha formato ISO
+
+y tiene la salida dada por la REMESA QUE se detalla abajo
+
+La suma final de SALIDA de CUENTA PRINCIPAL es igual a
+
+Cuota_mantenimiento + Remesa = Saldo total de SALIDA de CUENTA PRINCIPAL
+
+
+-----------------
+
+Remesa
+
+Es la suma aritmetica total de Obra Mundial (OM) durante el mes, agreado a la resolucion de obra mundial (siendo esta una variable manipulable de facil acceso por el desarrollador, estoy viendo si puedo encapsularla para no ser manupulable desde fuera de la clase, solo desde dentro por el desarrollador backend cuando lo asocie a la entrada de su valor)
+
+OM + Resolucion OM = Remesa
+
+--------------------------
+
+
+Que es lo que se debe mostrar de manera aleatoria?
+
+las fechas de RECIBIDO, y la fecha de entrad y salida de Principal, osea msotrarse todas las acciones ocurridas, en un solo lugar (endpoint) leugo en la interfaz se mostraran de una manera facil de analizar, pero eso es FRONT ahora estamos con logica y preparacion a arquitectura, tecnologias a utilizar,
+
+lo desarrollare con python fastapi, ubicado el backend en render, base de datos en Supabase, tengo pgAdmin4 en local, podemos probar en local testearlo y dejarlo para su uso en la nube
+
+armemos un readme luego un requirements y ya voy armando e repo de github
+
+ 
